@@ -15,3 +15,5 @@ Features include:
 This Bundle is in alpha state and not ready for prod usage.
 
 Documentation coming soon.
+
+[![Build Status](https://api.travis-ci.org/UniqueLibs/request-to-query-builder-bundle.png?branch=master)](https://travis-ci.org/UniqueLibs/request-to-query-builder-bundle)

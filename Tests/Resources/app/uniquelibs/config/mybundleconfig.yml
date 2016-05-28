@@ -1,0 +1,17 @@
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_sqlite
+                path:     %kernel.cache_dir%/test.db
+    orm:
+        auto_mapping: true
+
+liip_functional_test: ~
+

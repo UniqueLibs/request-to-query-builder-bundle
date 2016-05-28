@@ -1,0 +1,27 @@
+services:
+    uniquelibs.request_to_query_builder_test_bundle.entity.product_repository:
+        class: UniqueLibs\RequestToQueryBuilderTestBundle\Entity\ProductRepository
+        factory: [ "@doctrine.orm.entity_manager", getRepository ]
+        arguments:
+            - UniqueLibs\RequestToQueryBuilderTestBundle\Entity\Product
+
+    uniquelibs.request_to_query_builder_test_bundle.order_filter.product:
+        parent: uniquelibs.request_to_query_builder_bundle.filter.order_filter
+        calls:
+            - [addOrderProperty, ["product.id"]]
+            - [addOrderProperty, ["product.name"]]
+            - [addOrderProperty, ["product.camelCase"]]
+
+    uniquelibs.request_to_query_builder_test_bundle.search_filter.product:
+        parent: uniquelibs.request_to_query_builder_bundle.filter.search_filter
+        calls:
+            - [addSearchProperty, ["product.id", '@uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.number']]
+            - [addSearchProperty, ["product.name", '@uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.string']]
+            - [addSearchProperty, ["product.status", '@uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.string']]
+            - [addSearchProperty, ["product.camelCase", '@uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.number']]
+
+    uniquelibs.request_to_query_builder_test_bundle.request_processor.product:
+        parent: uniquelibs.request_to_query_builder_bundle.request_processor
+        calls:
+            - [addFilter, ['@uniquelibs.request_to_query_builder_test_bundle.order_filter.product']]
+            - [addFilter, ['@uniquelibs.request_to_query_builder_test_bundle.search_filter.product']]

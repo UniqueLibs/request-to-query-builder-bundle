@@ -1,0 +1,4 @@
+uniquelibs_request_to_query_builder_test_product:
+    resource: "@UniqueLibsRequestToQueryBuilderTestBundle/Controller/ProductController.php"
+    type:     annotation
+    prefix:   /products

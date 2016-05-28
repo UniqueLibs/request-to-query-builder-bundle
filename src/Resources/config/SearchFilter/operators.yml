@@ -1,0 +1,17 @@
+services:
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.equal_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\EqualOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.not_equal_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\NotEqualOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.like_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\LikeOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.not_like_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\NotLikeOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.greater_than_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\GreaterThanOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.greater_than_equal_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\GreaterThanEqualOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.lower_than_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\LowerThanOperator
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.lower_than_equal_operator:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchOperators\LowerThanEqualOperator

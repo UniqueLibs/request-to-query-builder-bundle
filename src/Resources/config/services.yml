@@ -1,0 +1,33 @@
+imports:
+    - { resource: SearchFilter/operators.yml }
+
+services:
+    uniquelibs.request_to_query_builder_bundle.request_processor:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Processor\RequestProcessor
+        abstract: true
+
+    uniquelibs.request_to_query_builder_bundle.filter.order_filter:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\OrderFilter
+        abstract: true
+
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter
+        abstract: true
+        calls:
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.equal_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.not_equal_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.like_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.not_like_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.greater_than_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.greater_than_equal_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.lower_than_operator"]]
+            - [addSearchOperator, ["@uniquelibs.request_to_query_builder_bundle.filter.search_filter.operator.lower_than_equal_operator"]]
+
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.string:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchProperties\StringSearchProperty
+        
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.number:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchProperties\NumberSearchProperty
+        
+    uniquelibs.request_to_query_builder_bundle.filter.search_filter.property.date_time:
+        class: UniqueLibs\RequestToQueryBuilderBundle\Filter\SearchFilter\SearchProperties\DateTimeSearchProperty

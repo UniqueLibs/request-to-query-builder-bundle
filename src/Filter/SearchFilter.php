@@ -171,7 +171,7 @@ class SearchFilter implements FilterInterface
 
                 $const = $data['base_expr'];
 
-                $expressions[] = $this->searchOperators[implode('_', $operator)]->execute($queryBuilder, $this->searchProperties[$colref][0], $data['base_expr']);
+                $expressions[] = $this->searchOperators[implode('_', $operator)]->execute($queryBuilder, $this->searchProperties[$colref][0], $data['base_expr'], $this->searchProperties[$colref][2] ? $this->searchProperties[$colref][2] : null);
             }
         }
         
@@ -216,12 +216,13 @@ class SearchFilter implements FilterInterface
     /**
      * @param string                  $property
      * @param SearchPropertyInterface $searchProperty
+     * @param string                  $propertyAlias
      *
      * @return $this
      */
-    public function addSearchProperty($property, SearchPropertyInterface $searchProperty)
+    public function addSearchProperty($property, SearchPropertyInterface $searchProperty, $propertyAlias = null)
     {
-        $this->searchProperties[StringHelper::snake($property)] = array($property, $searchProperty);
+        $this->searchProperties[StringHelper::snake($property)] = array($property, $searchProperty, $propertyAlias);
 
         return $this;
     }
